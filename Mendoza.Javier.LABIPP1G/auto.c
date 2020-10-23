@@ -9,6 +9,8 @@
 #include "marca.h"
 #include "validaciones.h"
 
+#include "trabajo.h"
+
 char menuChar()
 {
     char opcion;
@@ -24,10 +26,35 @@ char menuChar()
     printf("G.	LISTAR SERVICIOS\n");
     printf("H.	ALTA TRABAJO\n");
     printf("I.	LISTAR TRABAJOS\n");
-    printf("Z.      SALIR\n\n");
+    printf("J.	INFORMES\n");
+    printf("Z.	SALIR\n\n");
     printf("Ingrese opcion: ");
     fflush(stdin);
     opcion = toupper(getchar());
+
+    return opcion;
+}
+
+int subMenuInt()
+{
+    int opcion;
+    system("cls");
+
+    printf("*** Sub Menu ***\n\n");
+    printf("1.	LISTAR AUTOS POR COLOR SELECCIONADO\n");
+    printf("2.	LISTAR AUTOS POR MARCA SELECCIONADO\n");
+    printf("3.	AUTO O AUTOS MAS VIEJOS\n");
+    printf("4.	LISTAR AUTOS SEPARADOS POR MARCAS\n");
+    printf("5.	CONTAR AUTOS POR COLOR Y MARCA\n");
+    printf("6.	MARCA FAVORITA\n");
+    printf("7.	TRABAJOS HECHOS A UN AUTO\n");
+    printf("8.	IMPORTE TOTAL DE LOS TRABAJOS HECHOS.\n");
+    printf("9.	AUTOS A LOS QUE SE LE HIZO UN SERVICIO ELEGIDO.\n");
+    printf("10.	TRABAJOS HECHOS EN UNA FECHA ELEGIDA.\n");
+    printf("11.	SALIR\n\n");
+    printf("Ingrese opcion: ");
+    fflush(stdin);
+    scanf("%d", &opcion);
 
     return opcion;
 }
@@ -258,7 +285,8 @@ int bajaAutos(eAuto coche[], eMarca marca[], eColor color[], int tam)
             system("pause");
         }
         else
-        {   system("cls");
+        {
+            system("cls");
             printf("\nEliminara el siguiente auto\n\n");
             mostrarAuto(coche[indice], marca, color, tam);
 
@@ -283,7 +311,9 @@ int modificarAuto(eAuto coche[], int tam, eMarca marca[], int tamM, eColor color
     char patente[8];
     int indice;
     int error = 1;
-    int confirma;
+    int confirmaModelo;
+    int confirmaColor;
+    int respuesta;
 
     eAuto modificadoAuto;
     eColor modificadoColor;
@@ -306,6 +336,10 @@ int modificarAuto(eAuto coche[], int tam, eMarca marca[], int tamM, eColor color
         printf("\nPatente ingresada: %s\n\n", patente);
         system("pause");
 
+        system("cls");
+        utn_getNumeroConScanf(&respuesta, "\nQue desea modificar? *** COLOR *** presione 1, *** MODELO *** presione 2\n\n", "Ingreso una opcion incorrecta.\n\n", 1, 2, 10);
+        printf("\nLa opcion ingresada es: %d\n\n", respuesta);
+        system("pause");
 
         indice = buscarAuto(coche, tam, patente);
 
@@ -314,7 +348,7 @@ int modificarAuto(eAuto coche[], int tam, eMarca marca[], int tamM, eColor color
             printf("\nNo existe esa patente\n\n");
             system("pause");
         }
-        else
+        else if(respuesta == 1)
         {
             system("cls");
             printf("   *** AUTO A MODIFICAR ***\n");
@@ -337,18 +371,10 @@ int modificarAuto(eAuto coche[], int tam, eMarca marca[], int tamM, eColor color
             system("pause");
 
 
-            system("cls");
-            printf("   *** MODELO ***\n\n");
-            utn_getNumeroConScanf(&modificadoAuto.modelo, "Ingrese modelo (anio de fabricacion)\n", "Reingrese modelo, debe ingresar anios desde 1900 hasta 2020.\n", 1900, 2020, 10);
-            printf("\nEl Modelo ingresado es: %d\n\n", modificadoAuto.modelo);
-            system("pause");
+            utn_getNumeroConScanf(&confirmaColor, "\n\nPara modificar presione 1, para cancelar, 2\n", "\nOpcion incorrecta, debe ingresar 1 o 2, reintente\n", 1, 2, 10);
 
-
-            utn_getNumeroConScanf(&confirma, "\n\nPara modificar presione 1, para cancelar, 2\n", "\nOpcion incorrecta, debe ingresar 1 o 2, reintente\n", 1, 2, 10);
-
-            if(confirma == 1)
+            if(confirmaColor == 1)
             {
-                coche[indice].modelo = modificadoAuto.modelo;
                 coche[indice].idColor = modificadoColor.id;
 
                 error = 0;
@@ -357,7 +383,31 @@ int modificarAuto(eAuto coche[], int tam, eMarca marca[], int tamM, eColor color
             {
                 error = 2;
             }
+
         }
+        else
+        {
+            system("cls");
+            printf("   *** MODELO ***\n\n");
+            utn_getNumeroConScanf(&modificadoAuto.modelo, "Ingrese modelo (anio de fabricacion)\n", "Reingrese modelo, debe ingresar anios desde 1900 hasta 2020.\n", 1900, 2020, 10);
+            printf("\nEl Modelo ingresado es: %d\n\n", modificadoAuto.modelo);
+            system("pause");
+
+
+            utn_getNumeroConScanf(&confirmaModelo, "\n\nPara modificar presione 1, para cancelar, 2\n", "\nOpcion incorrecta, debe ingresar 1 o 2, reintente\n", 1, 2, 10);
+
+            if(confirmaModelo == 1)
+            {
+                coche[indice].modelo = modificadoAuto.modelo;
+
+                error = 0;
+            }
+            else
+            {
+                error = 2;
+            }
+        }
+
     }
     return error;
 }
@@ -463,4 +513,317 @@ int validarPatente(eAuto coche[], int tamA, char patente[])
     }
     return esValido;
 }
+////////////////////////////////////////
+int listarAutosXColor(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM)
+{
+    int error = -1;
+    int idColor;
+    int flag = 0;
+    char nombreColor[20];
+
+    if(coche != NULL && color != NULL && tamA >0 && tamC > 0)
+    {
+        system("cls");
+        printf("   *** Listado de Autos por color elegido ***\n\n");
+        mostrarColores(color, tamC);
+        printf("Ingrese id color.\n");
+        fflush(stdin);
+        scanf("%d", &idColor);
+
+        while(validarColor(color, tamC, idColor) == 0)
+        {
+            printf("Id invalido. Reingrese id color: ");
+            fflush(stdin);
+            scanf("%d", &idColor);
+        }
+
+        obtenerDescripcionColor(color, tamC, idColor, nombreColor);
+
+        system("cls");
+        printf("Autos con el color %s:\n\n", nombreColor);
+
+        for(int i=0; i<tamA; i++)
+        {
+            if(coche[i].isEmpty == 0 && coche[i].idColor == idColor)
+            {
+                mostrarAuto(coche[i], marca, color, tamA);
+                flag = 1;
+            }
+        }
+
+        if(flag == 0)
+        {
+            printf("No hay Autos con el color %s\n\n", nombreColor);
+        }
+
+        printf("\n\n");
+
+        error = 0;
+    }
+
+    return error;
+}
+
+int listarAutosXMarca(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM)
+{
+    int error = -1;
+    int idMarca;
+    int flag = 0;
+    char nombreMarca[20];
+
+    if(coche != NULL && marca != NULL && tamA >0 && tamM > 0)
+    {
+        system("cls");
+        printf("   *** Listado de Autos por Marca elegida ***\n\n");
+        mostrarMarcas(marca, tamM);
+        printf("Ingrese id Marca.\n");
+        fflush(stdin);
+        scanf("%d", &idMarca);
+
+        while(validarMarca(marca, tamM, idMarca) == 0)
+        {
+            printf("Id invalido. Reingrese id Marca: ");
+            fflush(stdin);
+            scanf("%d", &idMarca);
+        }
+
+        obtenerDescripcionMarca(marca, tamM, idMarca, nombreMarca);
+
+        system("cls");
+        printf("Autos con la Marca %s:\n\n", nombreMarca);
+
+        for(int i=0; i<tamA; i++)
+        {
+            if(coche[i].isEmpty == 0 && coche[i].idMarca == idMarca)
+            {
+                mostrarAuto(coche[i], marca, color, tamA);
+                flag = 1;
+            }
+        }
+
+        if(flag == 0)
+        {
+            printf("No hay Autos con la marca %s\n\n", nombreMarca);
+        }
+
+        printf("\n\n");
+
+        error = 0;
+    }
+
+    return error;
+}
+
+int autoMasViejo(eAuto coche[], int tamA, eColor color[], eMarca marca[])
+{
+    int error = 1;
+    int mayor;
+    int contadores[tamA];
+    int flag = 0;
+
+    for(int i=0; i<tamA; i++)
+    {
+        contadores[i] = 0;
+    }
+
+    if(coche != NULL && tamA >0)
+    {
+        system("cls");
+        printf("   *** Auto mas viejo ***\n\n");
+
+        for(int i=0; i < tamA; i++)
+        {
+            for(int j=0; j < tamA; j++)
+            {
+                if(coche[j].isEmpty == 0 && coche[j].modelo > coche[i].modelo)
+                {
+                    contadores[i]++;
+                }
+            }
+        }
+
+        for(int i=0; i<tamA; i++)
+        {
+            if(contadores[i] > mayor || flag == 0)
+            {
+                mayor = contadores[i];
+                flag = 1;
+            }
+        }
+
+        printf(" Id           Patente     Modelo        idMarca              idColor  \n\n");
+
+        for(int i=0; i<tamA; i++)
+        {
+            if(contadores[i] == mayor)
+            {
+                mostrarAuto(coche[i], marca, color, tamA);
+            }
+        }
+
+        printf("\n\n");
+        error = 0;
+    }
+
+    return error;
+}
+
+int listarAutosSeparadosXMarca(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM)
+{
+    int error = -1;
+    int flag = 0;
+    char descMarca[20];
+
+    if(coche != NULL && marca != NULL && tamA >0 && tamM > 0)
+    {
+        system("cls");
+        printf("   *** Listado de Autos separados por Marca ***\n\n");
+        for(int m = 0; m < tamM; m++)
+        {
+            flag = 0;
+            obtenerDescripcionMarca(marca, tamM, marca[m].id, descMarca);
+
+            printf("Marca: %s\n", descMarca);
+            for(int i=0; i<tamA; i++)
+            {
+                if(coche[i].isEmpty == 0 && coche[i].idMarca == marca[m].id)
+                {
+                    mostrarAuto(coche[i], marca, color, tamA);
+                    flag = 1;
+                }
+            }
+
+            if(flag == 0)
+            {
+                printf("No hay autos con la marca %s\n\n", descMarca);
+            }
+
+            printf("\n\n");
+        }
+        error = 0;
+    }
+    return error;
+}
+
+int contarAutosXColorYMarca(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM)
+{
+    int error = -1;
+    int idColor;
+    int idMarca;
+    char nombreColor[20];
+    char nombreMarca[20];
+
+    int contadorColor = 0;
+    int contadorMarca = 0;
+
+    if(coche != NULL && color != NULL && marca != NULL && tamA >0 && tamC > 0 && tamM > 0)
+    {
+        system("cls");
+        printf("   *** Cantidad de Autos de un color y marca ***\n");
+        mostrarColores(color, tamC);
+        printf("Ingrese id Color.\n");
+        fflush(stdin);
+        scanf("%d", &idColor);
+
+        while(validarColor(color, tamC, idColor) == 0)
+        {
+            printf("Id invalido. Reingrese id Color: ");
+            fflush(stdin);
+            scanf("%d", &idColor);
+        }
+
+        system("cls");
+        mostrarMarcas(marca, tamM);
+        printf("Ingrese id Marca.\n");
+        fflush(stdin);
+        scanf("%d", &idMarca);
+
+        while(validarMarca(marca, tamM, idMarca) == 0)
+        {
+            printf("Id invalido. Reingrese id Marca: ");
+            fflush(stdin);
+            scanf("%d", &idMarca);
+        }
+
+        for(int i=0; i<tamA; i++)
+        {
+            if(coche[i].isEmpty == 0 && coche[i].idColor == idColor)
+            {
+                contadorColor++;
+            }
+        }
+
+        for(int i=0; i<tamA; i++)
+        {
+            if(coche[i].isEmpty == 0 && coche[i].idMarca == idMarca)
+            {
+                contadorMarca++;
+            }
+        }
+        obtenerDescripcionColor(color, tamC, idColor, nombreColor);
+        obtenerDescripcionMarca(marca, tamM, idMarca, nombreMarca);
+
+        printf("\nCantidad Autos con el color %s: %d\n\n", nombreColor, contadorColor);
+        printf("Cantidad Autos con la Marca %s: %d\n\n", nombreMarca, contadorMarca);
+
+        error = 0;
+    }
+
+    return error;
+}
+
+int marcaFavorita(eAuto coche[], int tamA, eMarca marca[], int tamM)
+{
+    int error = 1;
+    int mayor;
+    int contadores[tamM];
+    int flag = 0;
+
+    for(int i=0; i<tamM; i++)
+    {
+        contadores[i] = 0;
+    }
+
+    if(coche != NULL && marca != NULL && tamA >0 && tamM > 0)
+    {
+        system("cls");
+        printf("   *** Marca favorita ***\n");
+        for(int m = 0; m < tamM; m++)
+        {
+            for(int i=0; i<tamA; i++)
+            {
+                if(coche[i].isEmpty == 0 && coche[i].idMarca == marca[m].id)
+                {
+                    contadores[m]++;
+                }
+            }
+        }
+
+        for(int i=0; i<tamM; i++)
+        {
+            if(contadores[i] > mayor || flag == 0)
+            {
+                mayor = contadores[i];
+                flag = 1;
+            }
+        }
+
+        printf("La o las marcas favoritas son: \n\n");
+
+        for(int i=0; i<tamM; i++)
+        {
+            if(contadores[i] == mayor)
+            {
+                printf("%s\n", marca[i].descripcion);
+            }
+        }
+
+        printf("\n\n");
+        error = 0;
+    }
+
+    return error;
+}
+
+
 

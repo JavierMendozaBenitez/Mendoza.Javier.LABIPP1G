@@ -8,6 +8,7 @@
 #include "auto.h"
 #include "color.h"
 #include "trabajo.h"
+#include "fecha.h"
 
 #define TAM_A 10
 #define TAM_M 5
@@ -19,6 +20,8 @@ int main()
 {
     char seguir = 's';
     char confirma;
+    char seguirSubMenu;
+    int confirmaSubMenu;
     int proximoLegajo = 1;
     int criterioM;
     int criterioP;
@@ -26,6 +29,10 @@ int main()
     int contadorAlta = 0;
 
     eAuto automovil[TAM_A];
+
+    eTrabajo trabajo[TAM_T];
+
+    eFecha fecha[TAM_T];
 
     eMarca marca[TAM_M] =
     {
@@ -53,8 +60,6 @@ int main()
         {2003, "Completo", 600}
     };
 
-    eTrabajo trabajo[TAM_T];
-
     if(inicializarAutos(automovil, TAM_A) == 0 && inicializarTrabajos(trabajo, TAM_T) == 0)
     {
         printf("Autos inicializados con exito.\n");
@@ -63,8 +68,19 @@ int main()
     {
         printf("Ha ocurrido un problema al inicializar coches");
     }
-    system("pause");
+
     harcodearDatos(automovil, TAM_A, 8);
+
+    trabajo[0] = (eTrabajo){30000, "AAAAAAA", 2000, {1,1,2001}, 0};
+    trabajo[1] = (eTrabajo){30001, "BH860PK", 2001, {2,11,2011}, 0};
+    trabajo[2] = (eTrabajo){30002, "CI971TT", 2002, {21,10,2014}, 0};
+    trabajo[3] = (eTrabajo){30003, "DJ082OI", 2000, {5,8,2019}, 0};
+    trabajo[4] = (eTrabajo){30004, "AAAAAAA", 2001, {5,8,2019}, 0};
+    trabajo[5] = (eTrabajo){30005, "BBBBBBB", 2002, {5,8,2019}, 0};
+
+    idTrabajo = 30006;
+
+    system("pause");
 
     do
     {
@@ -179,7 +195,6 @@ int main()
             mostrarServicios(servicio, TAM_S);
             break;
         case 'H':
-
             if(altaTrabajo(trabajo, servicio, automovil, marca, color, TAM_T, TAM_S, TAM_A, TAM_M, TAM_C, idTrabajo) == 0)
             {
                 idTrabajo++;
@@ -194,6 +209,70 @@ int main()
             system("cls");
             mostrarTrabajos(trabajo, servicio, TAM_T, TAM_S);
             break;
+        case 'J':
+            do
+            {
+                seguirSubMenu = 's';
+                switch(subMenuInt())
+                {
+                case 1:
+                    system("cls");
+                    listarAutosXColor(automovil, TAM_A, color, TAM_C, marca, TAM_M);
+                    break;
+                case 2:
+                    system("cls");
+                    listarAutosXMarca(automovil, TAM_A, color, TAM_C, marca, TAM_M);
+                    break;
+                case 3:
+                    system("cls");
+                    autoMasViejo(automovil, TAM_A, color, marca);
+                    break;
+                case 4:
+                    system("cls");
+                    listarAutosSeparadosXMarca(automovil, TAM_A, color, TAM_C, marca, TAM_M);
+                    break;
+                case 5:
+                    system("cls");
+                    contarAutosXColorYMarca(automovil, TAM_A, color, TAM_C, marca, TAM_M);
+                    break;
+                case 6:
+                    system("cls");
+                    marcaFavorita(automovil, TAM_A, marca, TAM_M);
+                    break;
+                case 7:
+                    system("cls");
+                    mostrarTrabajosDeUnAuto(automovil, TAM_A, trabajo, TAM_T, servicio, TAM_S, color, marca);
+                    break;
+                case 8:
+                    system("cls");
+                    informeImporteTotalAuto(automovil, TAM_A, trabajo, TAM_T, servicio, TAM_S, color, marca);
+                    break;
+                case 9:
+                    system("cls");
+                    mostrarAutosDeUnServicio(automovil, TAM_A, trabajo, TAM_T, servicio, TAM_S, color, marca);
+                    break;
+                 case 10:
+                    system("cls");
+                    mostrarTrabajosDeUnaFecha(automovil, TAM_A, trabajo, TAM_T, servicio, TAM_S, color, marca, fecha);
+                    break;
+                case 11:
+                    printf("Confirma salida? Presione 1 para si o 0 para no: ");
+                    fflush(stdin);
+                    scanf("%d", &confirmaSubMenu);
+
+                    if(confirmaSubMenu == 1)
+                    {
+                        seguirSubMenu = 'n';
+                    }
+                    break;
+                default:
+                    printf("Opcion invalida!!!\n");
+                    system("pause");
+                }
+                system("pause");
+            }
+            while(seguirSubMenu == 's');
+            break;
         case 'Z':
             printf("Confirma salida? Presione s para si o n para no: ");
             fflush(stdin);
@@ -206,7 +285,6 @@ int main()
             break;
         default:
             printf("Opcion invalida!!!\n");
-
         }
         system("pause");
     }
@@ -214,6 +292,3 @@ int main()
 
     return 0;
 }
-
-
-

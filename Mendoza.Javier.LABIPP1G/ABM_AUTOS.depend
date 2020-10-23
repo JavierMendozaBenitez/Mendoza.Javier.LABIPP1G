@@ -285,3 +285,201 @@
 	<conio.h>
 	"validaciones.h"
 
+1603485574 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"dataStore.h"
+	"auto.h"
+	"color.h"
+	"marca.h"
+	"validaciones.h"
+	"trabajo.h"
+
+1603485705 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\datastore.h
+
+1603486767 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\auto.h
+	"marca.h"
+	"color.h"
+
+1602893848 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\marca.h
+
+1602894150 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\color.h
+
+1602893675 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\validaciones.h
+
+1602867253 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\color.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"color.h"
+
+1603482409 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"fecha.h"
+	"trabajo.h"
+
+1602894003 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\fecha.h
+
+1603488000 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\trabajo.h
+	"fecha.h"
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"auto.h"
+
+1603488082 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\servicio.h
+
+1603483755 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"servicio.h"
+	"marca.h"
+	"auto.h"
+	"color.h"
+	"trabajo.h"
+	"fecha.h"
+
+1602866700 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\marca.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"marca.h"
+
+1603483801 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"servicio.h"
+	"auto.h"
+	"trabajo.h"
+
+1603483668 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\trabajo.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"trabajo.h"
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"fecha.h"
+	"auto.h"
+	"validaciones.h"
+
+1602893508 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\nueva carpeta\parcial 1\mendoza.javier.labipp1g\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"validaciones.h"
+
+1603492208 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\color.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"color.h"
+
+1602894150 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\color.h
+
+1603482409 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"fecha.h"
+	"trabajo.h"
+
+1602894003 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\fecha.h
+
+1603488000 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\trabajo.h
+	"fecha.h"
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"auto.h"
+
+1603488082 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\servicio.h
+
+1602893848 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\marca.h
+
+1603492797 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\auto.h
+	"marca.h"
+	"color.h"
+
+1602866700 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\marca.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"marca.h"
+
+1603483801 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"servicio.h"
+	"auto.h"
+	"trabajo.h"
+
+1603483668 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\trabajo.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"trabajo.h"
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"fecha.h"
+	"auto.h"
+	"validaciones.h"
+
+1602893675 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\validaciones.h
+
+1602893508 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"validaciones.h"
+
+1603494691 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"dataStore.h"
+	"auto.h"
+	"color.h"
+	"marca.h"
+	"validaciones.h"
+	"trabajo.h"
+
+1603485705 c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\datastore.h
+
+1603493448 source:c:\users\javier\documents\técnico universitario en programación\laboratorio y programación 1\parcial laboratorio 1\mendoza.javier.labipp1g\mendoza.javier.labipp1g\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"servicio.h"
+	"marca.h"
+	"auto.h"
+	"color.h"
+	"trabajo.h"
+	"fecha.h"
+

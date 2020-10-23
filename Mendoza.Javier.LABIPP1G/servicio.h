@@ -1,3 +1,4 @@
+
 #ifndef SERVICIO_H_INCLUDED
 #define SERVICIO_H_INCLUDED
 
@@ -36,4 +37,16 @@ int mostrarServicios(eServicio servicio[], int tam);
  *
  */
 int validarServicio(eServicio servicio[], int tamS, int id);
+
+
+/** \brief obtiene la descripcion de un servicio mediante su id
+ *
+ * \param servicio[] eServicio entidad donde buscar el servicio
+ * \param tamS int tamanio de eServicio
+ * \param id int id a buscar
+ * \param nombreServicio[] char cadena donde guardar la descripcion
+ * \return int devuelve o si se hizo correctamente o 1 sino
+ *
+ */
+int obtenerDescripcionServicio(eServicio servicio[], int tamS, int id, char nombreServicio[]);
 

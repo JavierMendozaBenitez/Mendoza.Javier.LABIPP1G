@@ -1,7 +1,10 @@
-#ifndef AUTO_H_INCLUDED
-#define AUTO_H_INCLUDED
 #include "marca.h"
 #include "color.h"
+
+#ifndef AUTO_H_INCLUDED
+#define AUTO_H_INCLUDED
+
+
 
 typedef struct
 {
@@ -176,3 +179,93 @@ int obtenerDescripcionColor(eColor color[], int tam, int id, char nombreColor[])
  *
  */
 int validarPatente(eAuto coche[], int tamA, char patente[]);
+
+
+/** \brief sub menu de opciones int
+ *
+ * \return int retorna la opcion elegida
+ *
+ */
+int subMenuInt();
+
+
+/** \brief seleccionas un color y te muestra los autos que tienen ese color
+ *
+ * \param coche[] eAuto entidad donde se elige el auto
+ * \param tamA int tamanio de eAuto
+ * \param color[] eColor entidad donde se elige el color
+ * \param tamC int tamanio de eColor
+ * \param marca[] eMarca entidad necesaria para mostrar todos los datos del auto
+ * \param tamM int tamanio de eMarca
+ * \return int retorna 0 si se hizo bien o -1 sino
+ *
+ */
+int listarAutosXColor(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM);
+
+/** \brief seleccionas una marca y te muestra los autos que tienen esa marca
+ *
+ * \param coche[] eAuto entidad donde se busca el auto
+ * \param tamA int tamanio de eAuto
+ * \param color[] eColor entidad necesaria para mostrar todos los datos del auto
+ * \param tamC int tamanio de eColor
+ * \param marca[] eMarca entidad donde se elige la marca
+ * \param tamM int tamanio de eMarca
+ * \return int retorna 0 si se hizo bien o -1 sino
+ *
+ */
+int listarAutosXMarca(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM);
+
+
+/** \brief muestra el auto mas viejo
+ *
+ * \param coche[] eAuto entidad donde busca el auto mas viejo
+ * \param tamA int tamanio de eAuto
+ * \param color[] eColor entidad necesaria para mostrar todos los datos del auto
+ * \param marca[] eMarca entidad necesaria para mostrar todos los datos del auto
+ * \return int retorna 0 si se hizo bien o 1 sino
+ *
+ */
+int autoMasViejo(eAuto coche[], int tamA, eColor color[], eMarca marca[]);
+
+
+/** \brief mustra una lista de autos separados por marca
+ *
+ * \param coche[] eAuto entidad donde buscar los autos
+ * \param tamA int tamanio de eAuto
+ * \param color[] eColor entidad necesaria para mostrar todos los datos del auto
+ * \param tamC int tamanio de eColor
+ * \param marca[] eMarca entidad donde busca las marcas
+ * \param tamM int tamanio de eMarca
+ * \return int retorna 0 si se hizo bien o -1 sino
+ *
+ */
+int listarAutosSeparadosXMarca(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM);
+
+
+/** \brief cuenta la cantidad de autos con un color y una marca seleccionada
+ *
+ * \param coche[] eAuto entidad donde buscar los autos
+ * \param tamA int tamanio de eAuto
+ * \param color[] eColor entidad donde buscar los colores
+ * \param tamC int tamanio de eColor
+ * \param marca[] eMarca entidad donde buscar las marcas
+ * \param tamM int tamanio de eMarca
+ * \return int retorna 0 si se hizo bien o -1 sino
+ *
+ */
+int contarAutosXColorYMarca(eAuto coche[], int tamA, eColor color[], int tamC, eMarca marca[], int tamM);
+
+
+/** \brief buusca la marca mas elegida
+ *
+ * \param coche[] eAuto entidad donde buscar los autos
+ * \param tamA int tamanio de eAuto
+ * \param marca[] eMarca entidad donde buscar las marcas
+ * \param tamM int tamanio de eMarca
+ * \return int retorna 0 si se hizo bien o 1 sino
+ *
+ */
+int marcaFavorita(eAuto coche[], int tamA, eMarca marca[], int tamM);
+
+
+

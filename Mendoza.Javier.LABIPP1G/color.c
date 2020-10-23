@@ -18,8 +18,8 @@ int mostrarColores(eColor color[], int tam)
 
     if(color != NULL && tam > 0)
     {
-        printf("   *** Listado de Colores ***\n");
-        printf("----------------------------\n");
+        printf("            *** Listado de Colores ***\n");
+        printf("------------------------------------------------\n");
         printf("  Id        Nombre Color \n");
 
         for(int i = 0; i < tam; i++)

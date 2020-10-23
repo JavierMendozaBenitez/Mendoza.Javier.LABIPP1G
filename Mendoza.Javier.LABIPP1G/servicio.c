@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "servicio.h"
+#include "auto.h"
 #include "trabajo.h"
 
 void mostrarServicio(eServicio servicio)
@@ -49,4 +50,23 @@ int validarServicio(eServicio servicio[], int tamS, int id)
         }
     }
     return esValido;
+}
+
+int obtenerDescripcionServicio(eServicio servicio[], int tamS, int id, char nombreServicio[])
+{
+    int error = 1;
+
+    if(servicio != NULL && tamS > 0 && id >= 1 && nombreServicio != NULL)
+    {
+        for(int i = 0; i < tamS; i++)
+        {
+            if(servicio[i].id == id)
+            {
+                strcpy(nombreServicio, servicio[i].descripcion);
+                error = 0;
+                break;
+            }
+        }
+    }
+    return error;
 }
